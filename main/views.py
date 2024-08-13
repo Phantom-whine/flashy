@@ -9,7 +9,6 @@ import json
 from django.contrib import messages
 from django.views.decorators.cache import cache_page
 
-@cache_page(60 * 100)
 @login_required(redirect_field_name='login')
 def home_view(request) :
     posts = Post.objects.all().order_by('?')
