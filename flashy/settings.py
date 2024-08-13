@@ -77,20 +77,10 @@ WSGI_APPLICATION = 'flashy.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',  # Use PostgreSQL as the database engine
-        'NAME': 'flashy_kndv',                     # Database name
-        'USER': 'flashy_kndv_user',                # Database username
-        'PASSWORD': 'nmQY4tLy93LS4Xl9bZkyyDaFsm2FYpWs',          # Database password (replace 'your_password_here' with the actual password)
-        'HOST': 'dpg-cqtn86aj1k6c738pq3b0-a',      # Hostname
-        'PORT': '5432',                            # Port (default for PostgreSQL)
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
