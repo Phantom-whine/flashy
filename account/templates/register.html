@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %} Register {% endblock %}
+{% block content %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="message {{message.tags}}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    <div class="main">
+        <div class="txt">
+            <h1>Create account</h1>
+            <p>create an account to start chilling &#128513; </p>
+        </div>
+        <div class="form">
+            <form method="post" action="{% url 'register' %}">
+                {% csrf_token %}
+                <input type="email" name="email" id="email" placeholder="Email" required>
+                <input type="password" name="password" id="password" placeholder="Password" required>
+                <!-- <a href="#">Forgot password?</a> -->
+                <button type="submit">Register</button>
+                <p class="note">Already have an account? <a href="{% url 'login' %}">Login</a></p>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'main/base.html' %}
+{% block title %} Post {% endblock %}
+{% block content %}  
+<div class="main">
+    <div class="txt">
+        <h1 class="pp-head">Create a Post</h1>
+    </div>
+    <div class="form">
+        <form method="post" action="{% url 'post' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <textarea placeholder="Enter Content" name="content" id="content" required></textarea>
+            <input type="file" name="image" id="image-upload">
+            <button type="submit" class="post-btn">&#128221;Post</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

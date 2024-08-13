@@ -1,0 +1,23 @@
+{% extends 'main/base.html' %}
+{% block title %} Post {% endblock %}
+{% block content %}  
+<div class="main">
+    <div class="txt">
+        <h1 class="pp-head">Edit post</h1>
+    </div>
+    <div class="form">
+        <form method="post" action="{% url 'edit-post' post.id %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <textarea placeholder="Enter Content" name="content" id="content" required>{{post.content}}</textarea>
+            {% if post.image %}
+            <img src="{{post.image.url}}" class="upload-img">
+            {% endif %}
+            <input type="file" name="image" id="image-upload">
+            <button type="submit" class="post-btn">&#128221;Edit</button>
+        </form>
+        <a href="{% url 'delete' post.id %}" style="text-decoration: none;">
+            <button class="post-btn" style="background-color: rgb(255, 82, 82) !important;">&#128465;Delete Post</button>
+        </a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,86 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+@font-face {
+    font-family: baloo;
+    src: url("BalooPaaji-Regular.13ea2d1fbdab.ttf");
+}
+@font-face {
+    font-family: bionix;
+    src: url("fonnts.com-Bionix-demo.0ddabb5e7f53.otf");
+}
+h1{
+    font-family: bionix;
+}
+.main{
+    border: 2px solid white;
+    width: 40%;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 5px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    position: relative;
+    top: 100px;
+}
+body{
+    background-color: #1c274c;
+}
+p{
+    font-family: baloo;
+}
+.txt{
+    text-align: center;
+}
+input{
+    display: block;
+    width: 90%;
+    margin-left: 3%;
+    padding: 10px;
+    border: 2px solid #dddd;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+button{
+    display: block;
+    width: 94%;
+    margin-left: 3%;
+    padding: 10px;
+    border: 2px solid #1c274c;
+    margin-top: 20px;
+    border-radius: 5px;
+    background-color: #1c274c;
+    color: white;
+    font-family: bionix;
+}
+.note{
+    margin-top: 20px;
+    text-align: center;
+}
+a{
+    margin-top: 10px;
+}
+.message{
+
+    padding: 10px;
+    border: 2px solid #1c274c;
+    font-size: 17px;
+    font-weight: bold;
+    font-family: baloo;
+    border-radius: 5px;
+    top: 10px;
+    width: 40%;
+}
+.error{
+    background-color: rgb(255, 112, 112);
+    color: rgb(151, 0, 0);
+    position: absolute;
+    left: 29%;
+}
+.success{
+    background-color: rgb(104, 255, 104);
+    color: rgb(0, 84, 0);
+    position: absolute;
+    left: 29%;
+}

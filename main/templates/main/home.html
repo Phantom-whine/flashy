@@ -1,0 +1,219 @@
+{% extends 'main/base.html' %}
+{% block title %} Home {% endblock %}
+{% block content %} 
+    <div class="load">
+        <h1>Flashy.io</h1>
+    </div>
+    <main class="main-div">
+        <div class="div1">
+            <h1 class="logo">Flashy.io</h1>
+            <button onclick="show_profile()" class="pro">&#128221;Edit Profile</button>
+            <div class="greet mt-10">
+                <img src="{{request.user.profile.profile_image.url}}" class="img-p">
+                <form action="{% url 'edit-profile' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-in">
+                        <p>Profile image</p>
+                        <input type="file" name="image" class="profile" required>
+                    </div>
+                    <button class="submit-pro" type="submit">&#128190;Save</button>
+                </form>
+            </div>
+        </div>
+        <div class="div2">
+            {% for post in posts %}
+                <div class="post">
+                    <div class="head">
+                        <div class="f2"><img src="{{post.profile.profile_image.url}}" alt="" class="pic"></div>
+                        <div class="f1"><p>{{post.profile.user.username}}</p></div>
+                    </div>
+                <div class="content">
+                    <p class="post-text">{{post.content|urlize}}</p>
+                    {% if post.image %}
+                    <img src="{{post.image.url}}" alt="" class="post-img">
+                    {% endif %}
+                </div>
+                <div class="stats">
+                    <div class="likes" onclick="call_login_view('{{request.user.profile.id}}', '{{post.id}}')">
+                        &#10084;&nbsp;&nbsp;<span id="like{{post.id}}">{{post.likes.count}}</span>
+                    </div>
+                    <div class="comments" onclick="retrieve_comments('{{post.id}}')">
+                        &#128172;&nbsp;&nbsp;<span id="comment{{post.id}}">{{post.comments.count}}</span>
+                    </div>
+                    {% if request.user.profile.id == post.profile.id %}
+                    <a href="{% url 'edit' post.id %}" class="white">
+                        <div class="edit">
+                            &#128221;Edit
+                        </div>
+                    </a>
+                    {% endif %}
+                </div>
+                <div class="id{{post.id}}" style="border: 2px solid #1d3581;
+                width: 95%;
+                margin-left: 2%;
+                padding: 5px;
+                height: fit-content;
+                max-height: 200px;
+                background-color: #1d3581;
+                border-radius: 5px;
+                overflow-y: auto;
+                padding-bottom: 20px;
+                display: none;
+                height: fit-content;
+                transition: height 0.3s;">
+                    <div class="comment-section"></div>
+                    <input type="text" name="comment" placeholder="Enter comment" class="w-10" id="comment-input{{post.id}}">
+                    <button onclick="post_comment('{{post.id}}')" class="buttonxxx">POST</button>
+                </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="div3">
+            <div class="greet">
+                <h2>Hi {{request.user.username}}!{{emoji|random|safe}}</h2>
+                    <button class="logout" onclick="show()">Logout &#8618;</button>
+                <a href="{% url 'post' %}">
+                    <button class="create">Post &#43;</button>
+                </a>
+            </div>
+            <div class="dis">
+                <h2>Are you sure?</h2>
+                <a href="{% url 'logout' %}">
+                    <button class="logout">Yes &#8618;</button>
+                </a>
+                    <button class="create" onclick="dismiss_log()">NO</button>
+
+            </div>
+        </div>
+    </main>
+    <script>
+        setTimeout(()=>{
+            document.querySelector('.load').style.display='none';
+        }, 2300)
+        function get_csrf(name){
+        let cookieValue = null;
+        if(document.cookie && document.cookie !== ''){
+            const cookies = document.cookie.split(';');
+            for(let i=0; i<cookies.length; i++){
+                const cookie = cookies[i].trim();
+                if(cookie.substring(0, name.length+1) === (name+'=')){
+                    cookieValue = decodeURIComponent(cookie.substring(name.length+1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+        function call_login_view(id, post_id){
+            let ids = parseInt(id);
+            let post_ids = parseInt(post_id);
+            var csrf = get_csrf('csrftoken');
+            fetch('{% url "like" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrf,
+                },
+                body: JSON.stringify({
+                    'id': ids,
+                    'post_id': post_ids
+                })
+            })
+            .then(response=>response.json())
+            .then(data=>{
+                if(data.stat == 'like'){
+                    let span_like = document.querySelector(`#like${post_ids}`).textContent;
+                    let count = parseInt(span_like) + 1;
+                    document.querySelector(`#like${post_ids}`).textContent = `${count}`;
+                }else{
+                    let span_like = document.querySelector(`#like${post_ids}`).textContent;
+                    let count = parseInt(span_like) - 1;
+                    document.querySelector(`#like${post_ids}`).textContent = `${count}`;
+                }
+            })
+        }
+        function edit_profile(){
+            fetch()
+        }
+        function show(){
+            document.querySelector('.dis').style.display = 'block'
+        }
+        function dismiss_log(){
+            document.querySelector('.dis').style.display = 'none'
+        }
+        let profile = false;
+        function show_profile(){
+            if(profile == false){
+                document.querySelector('.mt-10').style.display = 'block'
+                profile = true;
+            }else{
+                document.querySelector('.mt-10').style.display = 'none'
+                profile = false;
+            }
+        }
+        var comment_open = false;
+        function retrieve_comments(id){
+            if(comment_open == false){
+                id = parseInt(id);
+            fetch('comments/'+id, {
+                method: 'GET'
+            })
+            .then(response=>response.json())
+            .then(data=>{
+                let comments = data['comments'];
+                document.querySelector(`.id${id} .comment-section`).innerHTML = '';
+                document.querySelector(`.id${id}`).style.display='block';
+                for(let i=0; i<comments.length; i++){
+                    let html = `
+                        <div class'comment-body'>
+                            <img src='${comments[i].profile_image}' class='ppic'>
+                            <h3>${comments[i].username}</h3>
+                            <div class='comment-txt'>
+                                <p>${comments[i].content}</p>
+                            </div>
+                        </div>
+                    `;
+                    document.querySelector(`.id${id} .comment-section`).innerHTML += html;
+                }
+            })
+            comment_open = true;
+            }else{
+                document.querySelector(`.id${id}`).style.display='none';
+                comment_open = false;
+            }
+        }
+        function post_comment(id){
+            id = parseInt(id);
+            var csrf = get_csrf('csrftoken');
+            let value = document.querySelector(`#comment-input${id}`).value;
+            fetch('{% url "post_comment" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrf
+                },
+                body: JSON.stringify({
+                    comment: `${value}`,
+                    'id': id
+                })
+            })
+            .then(response=>response.json())
+            .then(data=>{
+                let username = '{{request.user.username}}'
+                let html = `
+                        <div class'comment-body'>
+                            <img src='{{request.user.profile.profile_image.url}}' class='ppic'>
+                            <h3>${username}</h3>
+                            <div class='comment-txt'>
+                                <p>${value}</p>
+                            </div>
+                        </div>
+                    `;
+                    let comment_count = document.querySelector(`#comment${id}`);
+                    let count = parseInt(comment_count.textContent) + 1
+                    comment_count.textContent = count;
+                    document.querySelector(`.id${id} .comment-section`).innerHTML += html;
+            })
+        }
+    </script>
+{% endblock %}
