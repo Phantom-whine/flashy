@@ -4,7 +4,7 @@ from django.utils import timezone
 
 class Profile(models.Model) :
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
-    profile_image = models.ImageField(upload_to='profile/', null=True, default='\gradient.jfif')
+    profile_image = models.ImageField(upload_to='profile/', null=True, default='profile/gradient.jfif')
     joined = models.DateField(default=timezone.now)
     email = models.CharField(max_length=50)
 
