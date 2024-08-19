@@ -185,7 +185,8 @@
         function post_comment(id){
             id = parseInt(id);
             var csrf = get_csrf('csrftoken');
-            let value = document.querySelector(`#comment-input${id}`).value;
+            let value_field = document.querySelector(`#comment-input${id}`);
+            let value = value_field.value;
             fetch('{% url "post_comment" %}', {
                 method: 'POST',
                 headers: {
@@ -213,6 +214,7 @@
                     let count = parseInt(comment_count.textContent) + 1
                     comment_count.textContent = count;
                     document.querySelector(`.id${id} .comment-section`).innerHTML += html;
+                    value_field.value = '';
             })
         }
     </script>
