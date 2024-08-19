@@ -9,7 +9,7 @@
             <h1 class="logo">Flashy.io</h1>
             <button onclick="show_profile()" class="pro">&#128221;Edit Profile</button>
             <div class="greet mt-10">
-                <img src="{{request.user.profile.profile_image.url}}" class="img-p">
+                <img src="{{request.user.profile.profile_image.url}}" class="img-p" draggable="false">
                 <form action="{% url 'edit-profile' %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="form-in">
