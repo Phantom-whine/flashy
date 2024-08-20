@@ -256,10 +256,10 @@ textarea{
     height: 100px;
     resize: none;
     font-family: baloo;
-    border: 1px solid #a7a7a7;
+    border: 3px solid #111830;
     margin-left: 3.5%;
     border-radius: 5px;
-    background-color: #dddd;
+    background-color: white;
     outline: none;
     padding: 5px;
 }

@@ -63,7 +63,7 @@ def post(request) :
         return HttpResponseRedirect(reverse('home'))
         
     else:
-        return render(request, 'main/post.html')
+        return render(request, 'main/post.html', {'emoji': ['&#128515;', '&#128513;', '&#128522;', '&#128524;']})
 
 @login_required(redirect_field_name='login')
 def edit_post(request, id) :

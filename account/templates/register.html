@@ -15,11 +15,26 @@
             <form method="post" action="{% url 'register' %}">
                 {% csrf_token %}
                 <input type="email" name="email" id="email" placeholder="Email" required>
-                <input type="password" name="password" id="password" placeholder="Password" required>
+                <!-- <input type="password" name="password" id="password" placeholder="Password" required> -->
+                <div class="password">
+                    <input type="password" name="password" id="password" placeholder="Password" required>
+                    <button id="view">View</button>
+                </div>
                 <!-- <a href="#">Forgot password?</a> -->
-                <button type="submit">Register</button>
+                <button type="submit" class="button">Register</button>
                 <p class="note">Already have an account? <a href="{% url 'login' %}">Login</a></p>
             </form>
         </div>
     </div>
+{% endblock %}
+{% block script %} 
+<script>
+    var viewed = false;
+    document.querySelector('#view').onclick = (e)=>{
+        e.preventDefault();
+        document.querySelector('#password').type = viewed == false? 'text' : 'password';
+        document.querySelector('#view').textContent = viewed == false? 'Hide': 'View';
+        viewed = !viewed;
+    }
+</script>
 {% endblock %}
