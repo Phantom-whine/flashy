@@ -123,7 +123,6 @@ def retrieve_comment(request, id) :
 def post_comment(request) :
     if request.method == 'POST' :
         body = json.loads(request.body)
-        print(body)
         content = body['comment']
         profile = request.user.profile
         post_id = body['id']
