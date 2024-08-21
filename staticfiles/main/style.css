@@ -1,0 +1,435 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color: #1c274c;
+}
+@font-face {
+    font-family: baloo;
+    src: url(BalooPaaji-Regular.ttf);
+}
+@font-face {
+    font-family: bionix;
+    src: url(fonnts.com-Bionix-demo.otf);
+}
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Track background color */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #888; /* Scrollbar thumb color */
+    border-radius: 5px; /* Roundness of the scrollbar thumb */
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Scrollbar thumb color on hover */
+  }
+.main-div{
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+.main-div .div2{
+    border: 1px solid #1d1d1ddd;
+}
+.div1{
+    width: 23%;
+}
+.div2{
+    width: 50%;
+    overflow-y: auto;
+    padding-bottom: 30px;
+}
+.dis{
+    display: none;
+    border: 2px solid #1d3581;
+    width: 87%;
+    margin-left: 5%;
+    background-color: #1d3581;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    color: white;
+    font-family: bionix;
+}
+.div3{
+    width: 27%;
+}
+.post{
+    border: 1px solid #111830;
+    width: 90%;
+    height: fit-content;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #111830;
+    margin-left: 3%;
+    margin-top: 20px;
+    color: white;
+}
+.head{
+    font-family: bionix;
+    width: 98%;
+    margin-left: 1%;
+    display: flex;
+    margin-bottom: 5px;
+}
+.f1{
+    position: relative;
+    top: 10px;
+}
+.content{
+    font-family: baloo;
+    border: 2px solid #1c274c;
+    background-color: #1c274c;
+    border-radius: 5px;
+    width: 95%;
+    margin: 0 auto;
+    padding: 3px;
+}
+.content a{
+    color: rgb(138, 138, 255);
+    border: 2px solid #111830;
+    border-radius: 30px;
+    padding-left: 5px;
+    padding-right: 5px;
+    text-decoration: none;
+    margin-right: 4px;
+}
+.pic{
+    width: 40px;
+    margin-right: 5px;
+    height: 40px;
+    border-radius: 50%;
+}
+.stats{
+    width: 95%;
+    margin-left: 2.5%;
+    display: flex;
+    margin-top: 10px;
+    font-family: baloo;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.likes{
+    margin-right: 10px;
+    border: 2px solid rgb(255, 73, 73);
+    width: 70px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: rgb(255, 73, 73);
+}
+.comments{
+    border: 2px solid rgb(73, 103, 255);
+    width: 100px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: rgb(73, 103, 255);
+}
+.edit{
+    border: 2px solid rgb(21, 60, 255);
+    width: 100px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: rgb(21, 60, 255);
+    margin-left: 10px;
+}
+.white{
+    color: white;
+    text-decoration: none;
+}
+.post-img{
+    width: 95%;
+    border: 1px solid #111830;
+    border-radius: 5px;
+    margin-left: 2.5%;
+    margin-top: 10px;
+}
+.message{
+
+    padding: 10px;
+    border: 2px solid #1c274c;
+    font-size: 17px;
+    font-weight: bold;
+    font-family: baloo;
+    border-radius: 5px;
+    top: 10px;
+    width: 40%;
+    z-index: 3;
+}
+.error{
+    background-color: rgb(255, 112, 112);
+    color: rgb(151, 0, 0);
+    position: absolute;
+    left: 29%;
+}
+.success{
+    background-color: rgb(104, 255, 104);
+    color: rgb(0, 84, 0);
+    position: absolute;
+    left: 29%;
+}
+.info{
+    background-color: rgb(104, 197, 255);
+    color: rgb(0, 42, 84);
+    position: absolute;
+    left: 29%;
+}
+.greet{
+    border: 2px solid #1d3581;
+    width: 87%;
+    margin-left: 5%;
+    background-color: #1d3581;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+}
+.greet h2{
+    font-family: bionix;
+    color: white;
+}
+.greet button, .dis button{
+    border: 2px solid #111830;
+    width: 49%;
+    padding: 7px;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-family: baloo;
+    color: white;
+    font-size: 17px;
+}
+.logout, .dis .logout{
+    background-color: rgb(255, 54, 54);
+}
+.create{
+    background-color: rgb(52, 52, 255);
+}
+.dis .create{
+    background-color: rgb(84, 255, 84);
+}
+
+
+.main{
+    border: 2px solid white;
+    width: 40%;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 5px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    position: relative;
+    top: 70px;
+}
+.txt{
+    text-align: center;
+}
+input{
+    display: block;
+    width: 90%;
+    margin-left: 3%;
+    padding: 10px;
+    border: 2px solid #dddd;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+.post-btn{
+    display: inline;
+    margin-left: 3%;
+    padding: 10px;
+    border: 2px solid #1c274c;
+    margin-top: 20px;
+    border-radius: 5px;
+    background-color: rgb(73, 103, 255);
+    color: white;
+    font-family: bionix;
+    width: 95%;
+}
+.note{
+    margin-top: 20px;
+    text-align: center;
+}
+.pp-head{
+    font-family: baloo;
+}
+textarea{
+    width: 91%;
+    height: 100px;
+    resize: none;
+    font-family: baloo;
+    border: 3px solid #111830;
+    margin-left: 3.5%;
+    border-radius: 5px;
+    background-color: white;
+    outline: none;
+    padding: 5px;
+}
+textarea::placeholder{
+    color: black;
+}
+.upload-img{
+    border: 1px solid white;
+    width: 50%;
+    margin-left: 25%;
+}
+#dismiss{
+    float: right;
+    background-color: black;
+    padding: 3px;
+    font-family: monospace;
+    color: white;
+    border-radius: 5px;
+}
+.load{
+    position: absolute;
+    background-color: #111830;
+    height: 100%;
+    z-index: 3;
+    text-align: center;
+    width: 100%;
+    color: white;
+    font-family: bionix;
+}
+@keyframes color {
+    10%{
+        color: red;
+    }
+    20%{
+        color: rgb(39, 39, 255);
+    }
+    30%{
+        color: yellow;
+    }
+    40%{
+        color: green;
+    }
+    50%{
+        color: orange;
+    }
+}
+.load h1{
+    position: relative;
+    top: 250px;
+    animation-name: color;
+    animation-duration: 5s;
+    font-size: 70px;
+}
+.logo{
+    font-family: bionix;
+    position: relative;
+    left: 20px;
+    top: 10px;
+    /* -webkit-text-stroke-width: 2px; 
+    -webkit-text-stroke-color: black; */
+    background: linear-gradient(white, rgb(125, 173, 255));
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    color: white;
+}
+.profile{
+    width: 90%;
+    margin-left: 1%;
+    margin-top: 1px;
+    background-color: transparent;
+    color: white;
+}
+.form-in{
+    margin-top: 7px;
+}
+.form-in p{
+    margin-left: 3px;
+    font-family: baloo;
+    color: white;
+}
+.img-p{
+    border: 2px solid #dddd;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: white;
+}
+.mt-10{
+    margin-top: 60px;
+    display: none;
+    background-color: #1c274c;
+}
+.pro{
+    border: 2px solid #1d3581;
+    width: 90%;
+    padding: 5px;
+    background-color: #1d3581;
+    border-radius: 5px;
+    color: white;
+    position: relative;
+    top: 5%;
+    font-family: baloo;
+    left: 5%;
+}
+.mt-10 .submit-pro{
+    border: 2px solid rgb(21, 60, 255);
+    color: white;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1px;
+    background-color: rgb(21, 60, 255);
+    margin-top: 10px;
+}
+.display-comments{
+    border: 2px solid #1d3581;
+    width: 95%;
+    margin-left: 2%;
+    padding: 5px;
+    height: fit-content;
+    max-height: 200px;
+    background-color: #1d3581;
+    border-radius: 5px;
+    overflow-y: auto;
+    padding-bottom: 20px;
+    display: none;
+    height: fit-content;
+    transition: height 0.3s;
+}
+.buttonxxx{
+    border: 2px solid #111830;
+    color: white;
+    font-family: baloo;
+    width: 10%;
+    padding: 8px;
+    background-color: #111830;
+    border-radius: 5px;
+}
+.w-10{
+    width: 80% !important;
+    display: inline;
+    background-color: transparent;
+    color: white;
+    font-family: monospace;
+    outline: none;
+}
+.comment-section div{
+    width: 95%;
+    margin-left: 2%;
+    border: 1px solid #1c274c;
+    border-radius: 5px 5px 0 5px;
+    background-color: #1c274c;
+    margin-top: 5px;
+}
+.comment-txt{
+    margin-top: 10px;
+}
+.comment-section div h3{
+    font-family: baloo;
+    letter-spacing: 1px;
+    display: inline;
+    position: relative;
+    bottom: 15px;
+}
+.comment-section div p{
+    font-family: monospace;
+    position: relative;
+    bottom: 10px;
+    font-size: 16px;
+}
+.ppic{
+    width: 40px;
+    margin-left: 1%;
+}
