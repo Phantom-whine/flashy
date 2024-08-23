@@ -8,13 +8,16 @@
     {% block style %}  {% endblock %}
     <link rel="shortcut icon" href="{% static 'favicon.png' %}" type="image/x-icon">
     <style>
+        ::-webkit-scrollbar{
+            width: 10px;
+        }
         ::-webkit-scrollbar-track {
             background-color: #f1f1f1; /* Track background color */
         }
 
         ::-webkit-scrollbar-thumb {
             background-color: #888; /* Scrollbar thumb color */
-            border-radius: 5px; /* Roundness of the scrollbar thumb */
+            border-radius: 1px; /* Roundness of the scrollbar thumb */
         }
 
         ::-webkit-scrollbar-thumb:hover {

@@ -104,11 +104,11 @@
         }
         return cookieValue;
     }
-        function call_login_view(id, post_id){
+        async function call_login_view(id, post_id){
             let ids = parseInt(id);
             let post_ids = parseInt(post_id);
             var csrf = get_csrf('csrftoken');
-            fetch('{% url "like" %}', {
+            await fetch('{% url "like" %}', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -132,9 +132,7 @@
                 }
             })
         }
-        function edit_profile(){
-            fetch()
-        }
+        
         function show(){
             document.querySelector('.dis').style.display = 'block'
         }
@@ -152,10 +150,10 @@
             }
         }
         var comment_open = false;
-        function retrieve_comments(id){
+        async function retrieve_comments(id){
             if(comment_open == false){
                 id = parseInt(id);
-            fetch('comments/'+id, {
+            await fetch('comments/'+id, {
                 method: 'GET'
             })
             .then(response=>response.json())
@@ -182,12 +180,12 @@
                 comment_open = false;
             }
         }
-        function post_comment(id){
+        async function post_comment(id){
             id = parseInt(id);
             var csrf = get_csrf('csrftoken');
             let value_field = document.querySelector(`#comment-input${id}`);
             let value = value_field.value;
-            fetch('{% url "post_comment" %}', {
+            await fetch('{% url "post_comment" %}', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

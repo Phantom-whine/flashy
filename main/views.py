@@ -4,7 +4,6 @@ from django.http import JsonResponse, HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
 from .models import Post, Likes, Comments
 from account.models import Profile
-from django.views.decorators.csrf import csrf_exempt
 import json
 from django.contrib import messages
 from django.views.decorators.cache import cache_page
@@ -16,7 +15,6 @@ def home_view(request) :
 
     return render(request, 'main/home.html', {'posts': posts, 'profile': profile,'emoji': ['&#128515;', '&#128513;', '&#128522;', '&#128524;']})
 
-@csrf_exempt
 def like_view(request) :
     data = json.loads(request.body)
     id = data['id']
@@ -119,7 +117,6 @@ def retrieve_comment(request, id) :
 
     return JsonResponse({'comments': comments_json}, status=200)
 
-@csrf_exempt
 def post_comment(request) :
     if request.method == 'POST' :
         body = json.loads(request.body)
