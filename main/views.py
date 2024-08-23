@@ -117,7 +117,7 @@ def retrieve_comment(request, id) :
         }
         comments_json.append(dict_compose)
 
-    return JsonResponse({'comments': comments_json})
+    return JsonResponse({'comments': comments_json}, status=200)
 
 @csrf_exempt
 def post_comment(request) :

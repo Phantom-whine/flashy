@@ -46,9 +46,6 @@ def register(request) :
             user = User.objects.create(username=username)
             user.set_password(password)
             user.save()
-            #Creating user profile
-            profile = Profile.objects.create(user=user, email=email)
-            profile.save()
 
             messages.success(request, f'Account for {username} created successfully')
             login(request, user)
