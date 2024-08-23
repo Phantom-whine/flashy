@@ -65,18 +65,18 @@ WSGI_APPLICATION = 'flashy.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
 # DATABASES = {
-#      'default': dj_database_url.config(
-#          default='postgresql://flashy_kndv_user:nmQY4tLy93LS4Xl9bZkyyDaFsm2FYpWs@dpg-cqtn86aj1k6c738pq3b0-a.oregon-postgres.render.com/flashy_kndv',
-#      )
-#  }
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+DATABASES = {
+     'default': dj_database_url.config(
+         default='postgresql://flashy_kndv_user:nmQY4tLy93LS4Xl9bZkyyDaFsm2FYpWs@dpg-cqtn86aj1k6c738pq3b0-a.oregon-postgres.render.com/flashy_kndv',
+     )
+ }
 
 
 # Password validation
